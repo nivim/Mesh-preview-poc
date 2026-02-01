@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="skyGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#2d2d44"/>
+    </linearGradient>
+    <linearGradient id="buildingGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#88aacc"/>
+      <stop offset="100%" style="stop-color:#6688aa"/>
+    </linearGradient>
+    <linearGradient id="fillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#66bb6a"/>
+      <stop offset="100%" style="stop-color:#4caf50"/>
+    </linearGradient>
+    <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#444" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#skyGrad2)"/>
+
+  <!-- Grid (ground plane) -->
+  <g transform="translate(50, 220) skewX(-30) scale(1, 0.5)">
+    <rect width="300" height="200" fill="url(#grid2)" opacity="0.3"/>
+  </g>
+
+  <!-- Ground plane -->
+  <polygon points="50,220 200,280 350,220 200,160" fill="#2a2a3e" stroke="#444" stroke-width="1"/>
+
+  <!-- BASE FILL (green, semi-transparent) -->
+  <g transform="translate(120, 180)" opacity="0.7">
+    <!-- Front face -->
+    <polygon points="0,0 0,30 80,30 80,0" fill="url(#fillGrad)" stroke="#2e7d32" stroke-width="1"/>
+    <!-- Top face -->
+    <polygon points="0,0 40,-15 120,-15 80,0" fill="#81c784" stroke="#2e7d32" stroke-width="1"/>
+    <!-- Side face -->
+    <polygon points="80,0 120,-15 120,15 80,30" fill="#4caf50" stroke="#2e7d32" stroke-width="1"/>
+  </g>
+
+  <!-- Building (on top of fill) -->
+  <g transform="translate(120, 60)">
+    <!-- Main body -->
+    <polygon points="0,80 0,150 80,150 80,80" fill="url(#buildingGrad2)" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="0,80 40,50 120,50 80,80" fill="#99bbdd" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="80,80 120,50 120,120 80,150" fill="#7799bb" stroke="#5577aa" stroke-width="1"/>
+
+    <!-- Roof -->
+    <polygon points="10,80 50,40 90,80" fill="#aa8866" stroke="#886644" stroke-width="1"/>
+    <polygon points="50,40 130,40 90,80" fill="#ccaa88" stroke="#886644" stroke-width="1"/>
+
+    <!-- Windows -->
+    <rect x="15" y="95" width="20" height="25" fill="#1a1a2e" stroke="#5577aa"/>
+    <rect x="45" y="95" width="20" height="25" fill="#1a1a2e" stroke="#5577aa"/>
+    <rect x="15" y="130" width="20" height="15" fill="#1a1a2e" stroke="#5577aa"/>
+
+    <!-- Door -->
+    <rect x="45" y="130" width="15" height="20" fill="#1a1a2e" stroke="#5577aa"/>
+  </g>
+
+  <!-- Fill indicator arrow -->
+  <g transform="translate(280, 175)">
+    <line x1="0" y1="0" x2="0" y2="35" stroke="#4caf50" stroke-width="2"/>
+    <polygon points="-5,35 5,35 0,42" fill="#4caf50"/>
+    <text x="5" y="20" fill="#4caf50" font-size="9" font-family="monospace">BASE</text>
+    <text x="5" y="30" fill="#4caf50" font-size="9" font-family="monospace">FILL</text>
+  </g>
+
+  <!-- Convex hull indicator -->
+  <g transform="translate(30, 240)">
+    <text fill="#81c784" font-size="9" font-family="monospace">Convex Hull</text>
+    <text y="12" fill="#81c784" font-size="9" font-family="monospace">Footprint</text>
+    <line x1="70" y1="-5" x2="100" y2="-20" stroke="#81c784" stroke-width="1" stroke-dasharray="3,2"/>
+  </g>
+
+  <!-- Label -->
+  <text x="200" y="25" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Base Fill Applied</text>
+  <text x="200" y="290" fill="#888" font-size="10" font-family="monospace" text-anchor="middle">Green extrusion fills gap from ground to model base</text>
+</svg>

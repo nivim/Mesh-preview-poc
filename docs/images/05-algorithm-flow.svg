@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400">
+  <defs>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3d5a80"/>
+      <stop offset="100%" style="stop-color:#2d4a70"/>
+    </linearGradient>
+    <linearGradient id="processGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a7c59"/>
+      <stop offset="100%" style="stop-color:#3a6c49"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="400" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="250" y="25" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Base Fill Algorithm Flow</text>
+
+  <!-- Step 1: Load IFC -->
+  <g transform="translate(50, 50)">
+    <rect width="120" height="50" fill="url(#boxGrad)" rx="5" stroke="#5a7aa0" stroke-width="1"/>
+    <text x="60" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">1. Load IFC</text>
+    <text x="60" y="35" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">web-ifc.wasm</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <line x1="170" y1="75" x2="200" y2="75" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 2: Extract Vertices -->
+  <g transform="translate(210, 50)">
+    <rect width="120" height="50" fill="url(#boxGrad)" rx="5" stroke="#5a7aa0" stroke-width="1"/>
+    <text x="60" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">2. Extract Verts</text>
+    <text x="60" y="35" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">57,211 vertices</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="330" y1="75" x2="360" y2="75" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 3: Project to XZ -->
+  <g transform="translate(370, 50)">
+    <rect width="120" height="50" fill="url(#boxGrad)" rx="5" stroke="#5a7aa0" stroke-width="1"/>
+    <text x="60" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">3. Project XZ</text>
+    <text x="60" y="35" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">2D points</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="430" y1="100" x2="430" y2="130" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 4: Convex Hull -->
+  <g transform="translate(370, 140)">
+    <rect width="120" height="50" fill="url(#processGrad)" rx="5" stroke="#5a9c69" stroke-width="1"/>
+    <text x="60" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">4. Convex Hull</text>
+    <text x="60" y="35" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">Graham Scan</text>
+  </g>
+
+  <!-- Arrow left -->
+  <line x1="370" y1="165" x2="330" y2="165" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 5: Create Shape -->
+  <g transform="translate(210, 140)">
+    <rect width="120" height="50" fill="url(#processGrad)" rx="5" stroke="#5a9c69" stroke-width="1"/>
+    <text x="60" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">5. Create Shape</text>
+    <text x="60" y="35" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">THREE.Shape</text>
+  </g>
+
+  <!-- Arrow left -->
+  <line x1="210" y1="165" x2="170" y2="165" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 6: Extrude -->
+  <g transform="translate(50, 140)">
+    <rect width="120" height="50" fill="url(#processGrad)" rx="5" stroke="#5a9c69" stroke-width="1"/>
+    <text x="60" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">6. Extrude</text>
+    <text x="60" y="35" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">ExtrudeGeometry</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="110" y1="190" x2="110" y2="220" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 7: Add to Scene -->
+  <g transform="translate(50, 230)">
+    <rect width="120" height="50" fill="#5d4e80" rx="5" stroke="#7d6ea0" stroke-width="1"/>
+    <text x="60" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">7. Add to Scene</text>
+    <text x="60" y="35" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">scene.add(mesh)</text>
+  </g>
+
+  <!-- Convex Hull Visualization -->
+  <g transform="translate(250, 240)">
+    <rect width="200" height="130" fill="#252540" rx="5" stroke="#444" stroke-width="1"/>
+    <text x="100" y="20" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Convex Hull Example</text>
+
+    <!-- Points scatter -->
+    <g transform="translate(30, 40)">
+      <!-- Interior points (will be excluded) -->
+      <circle cx="60" cy="40" r="3" fill="#ff6b6b" opacity="0.5"/>
+      <circle cx="70" cy="50" r="3" fill="#ff6b6b" opacity="0.5"/>
+      <circle cx="50" cy="55" r="3" fill="#ff6b6b" opacity="0.5"/>
+      <circle cx="80" cy="35" r="3" fill="#ff6b6b" opacity="0.5"/>
+
+      <!-- Hull points -->
+      <circle cx="20" cy="70" r="4" fill="#4caf50"/>
+      <circle cx="10" cy="30" r="4" fill="#4caf50"/>
+      <circle cx="50" cy="10" r="4" fill="#4caf50"/>
+      <circle cx="100" cy="20" r="4" fill="#4caf50"/>
+      <circle cx="120" cy="50" r="4" fill="#4caf50"/>
+      <circle cx="100" cy="70" r="4" fill="#4caf50"/>
+
+      <!-- Hull outline -->
+      <polygon points="20,70 10,30 50,10 100,20 120,50 100,70" fill="none" stroke="#4caf50" stroke-width="2"/>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(10, 110)">
+      <circle cx="5" cy="5" r="3" fill="#4caf50"/>
+      <text x="15" y="8" fill="#aaa" font-size="8" font-family="monospace">Hull points</text>
+      <circle cx="85" cy="5" r="3" fill="#ff6b6b" opacity="0.5"/>
+      <text x="95" y="8" fill="#aaa" font-size="8" font-family="monospace">Interior (excluded)</text>
+    </g>
+  </g>
+
+  <!-- Formula -->
+  <g transform="translate(20, 310)">
+    <rect width="180" height="60" fill="#252540" rx="5" stroke="#444" stroke-width="1"/>
+    <text x="90" y="18" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Volume Formula</text>
+    <text x="90" y="35" fill="#4fc3f7" font-size="9" font-family="monospace" text-anchor="middle">V = Area × Height</text>
+    <text x="90" y="50" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">V = 146.2 × 2.0 = 292.4 m³</text>
+  </g>
+
+  <!-- Output Stats -->
+  <g transform="translate(210, 310)">
+    <rect width="180" height="60" fill="#252540" rx="5" stroke="#444" stroke-width="1"/>
+    <text x="90" y="18" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Output</text>
+    <text x="90" y="35" fill="#81c784" font-size="9" font-family="monospace" text-anchor="middle">Base fill mesh created</text>
+    <text x="90" y="50" fill="#aaa" font-size="8" font-family="monospace" text-anchor="middle">Semi-transparent green</text>
+  </g>
+</svg>

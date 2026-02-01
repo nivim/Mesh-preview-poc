@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="skyGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#2d2d44"/>
+    </linearGradient>
+    <linearGradient id="buildingGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#88aacc"/>
+      <stop offset="100%" style="stop-color:#6688aa"/>
+    </linearGradient>
+    <linearGradient id="fillGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#66bb6a"/>
+      <stop offset="100%" style="stop-color:#4caf50"/>
+    </linearGradient>
+    <linearGradient id="cavityGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5d6d7e"/>
+      <stop offset="100%" style="stop-color:#4a5a6a"/>
+    </linearGradient>
+    <pattern id="grid4" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#444" stroke-width="0.5"/>
+    </pattern>
+    <!-- Glow effect for "solid" appearance -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#skyGrad4)"/>
+
+  <!-- Grid (ground plane) -->
+  <g transform="translate(50, 220) skewX(-30) scale(1, 0.5)">
+    <rect width="300" height="200" fill="url(#grid4)" opacity="0.3"/>
+  </g>
+
+  <!-- Ground plane -->
+  <polygon points="50,220 200,280 350,220 200,160" fill="#2a2a3e" stroke="#444" stroke-width="1"/>
+
+  <!-- BASE FILL (green, connects to ground) -->
+  <g transform="translate(120, 180)" opacity="0.7">
+    <polygon points="0,0 0,30 80,30 80,0" fill="url(#fillGrad4)" stroke="#2e7d32" stroke-width="1"/>
+    <polygon points="0,0 40,-15 120,-15 80,0" fill="#81c784" stroke="#2e7d32" stroke-width="1"/>
+    <polygon points="80,0 120,-15 120,15 80,30" fill="#4caf50" stroke="#2e7d32" stroke-width="1"/>
+  </g>
+
+  <!-- Building with ALL FILLS applied -->
+  <g transform="translate(120, 60)" filter="url(#glow)">
+    <!-- Main body -->
+    <polygon points="0,80 0,150 80,150 80,80" fill="url(#buildingGrad4)" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="0,80 40,50 120,50 80,80" fill="#99bbdd" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="80,80 120,50 120,120 80,150" fill="#7799bb" stroke="#5577aa" stroke-width="1"/>
+
+    <!-- Roof -->
+    <polygon points="10,80 50,40 90,80" fill="#aa8866" stroke="#886644" stroke-width="1"/>
+    <polygon points="50,40 130,40 90,80" fill="#ccaa88" stroke="#886644" stroke-width="1"/>
+
+    <!-- Windows with CAVITY FILL (solid dark interior) -->
+    <rect x="15" y="95" width="20" height="25" fill="url(#cavityGrad4)" stroke="#5577aa"/>
+    <rect x="45" y="95" width="20" height="25" fill="url(#cavityGrad4)" stroke="#5577aa"/>
+    <rect x="15" y="130" width="20" height="15" fill="url(#cavityGrad4)" stroke="#5577aa"/>
+
+    <!-- Door with cavity fill -->
+    <rect x="45" y="130" width="15" height="20" fill="url(#cavityGrad4)" stroke="#5577aa"/>
+  </g>
+
+  <!-- Stats panel -->
+  <g transform="translate(280, 50)">
+    <rect width="110" height="90" fill="rgba(0,0,0,0.7)" rx="5"/>
+    <text x="55" y="15" fill="#fff" font-size="9" font-family="sans-serif" text-anchor="middle" font-weight="bold">Volume Stats</text>
+    <line x1="5" y1="22" x2="105" y2="22" stroke="#444"/>
+    <text x="10" y="38" fill="#888" font-size="8" font-family="monospace">Original:</text>
+    <text x="100" y="38" fill="#4fc3f7" font-size="8" font-family="monospace" text-anchor="end">123.5 m³</text>
+    <text x="10" y="52" fill="#888" font-size="8" font-family="monospace">Base Fill:</text>
+    <text x="100" y="52" fill="#81c784" font-size="8" font-family="monospace" text-anchor="end">+223.7 m³</text>
+    <text x="10" y="66" fill="#888" font-size="8" font-family="monospace">Total:</text>
+    <text x="100" y="66" fill="#81c784" font-size="8" font-family="monospace" text-anchor="end">347.2 m³</text>
+    <line x1="5" y1="72" x2="105" y2="72" stroke="#444"/>
+    <text x="10" y="85" fill="#888" font-size="8" font-family="monospace">Increase:</text>
+    <text x="100" y="85" fill="#81c784" font-size="8" font-family="monospace" text-anchor="end">+181%</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(20, 240)">
+    <rect x="0" y="0" width="12" height="12" fill="#88aacc" stroke="#5577aa"/>
+    <text x="18" y="10" fill="#888" font-size="8" font-family="monospace">Model</text>
+
+    <rect x="60" y="0" width="12" height="12" fill="#4caf50" stroke="#2e7d32" opacity="0.7"/>
+    <text x="78" y="10" fill="#888" font-size="8" font-family="monospace">Base Fill</text>
+
+    <rect x="140" y="0" width="12" height="12" fill="#5d6d7e" stroke="#78909c"/>
+    <text x="158" y="10" fill="#888" font-size="8" font-family="monospace">Cavity Fill</text>
+  </g>
+
+  <!-- Checkmarks for features -->
+  <g transform="translate(260, 155)">
+    <text x="0" y="0" fill="#81c784" font-size="10">✓</text>
+    <text x="15" y="0" fill="#ccc" font-size="8" font-family="monospace">Solid appearance</text>
+    <text x="0" y="15" fill="#81c784" font-size="10">✓</text>
+    <text x="15" y="15" fill="#ccc" font-size="8" font-family="monospace">Ground connected</text>
+    <text x="0" y="30" fill="#81c784" font-size="10">✓</text>
+    <text x="15" y="30" fill="#ccc" font-size="8" font-family="monospace">Print-ready preview</text>
+  </g>
+
+  <!-- Label -->
+  <text x="200" y="25" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Combined Output (Full Visualization)</text>
+  <text x="200" y="290" fill="#888" font-size="10" font-family="monospace" text-anchor="middle">Model appears as solid mass ready for 3D printing</text>
+</svg>

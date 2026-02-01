@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="skyGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#2d2d44"/>
+    </linearGradient>
+    <linearGradient id="buildingGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#88aacc"/>
+      <stop offset="100%" style="stop-color:#6688aa"/>
+    </linearGradient>
+    <linearGradient id="cavityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5d6d7e"/>
+      <stop offset="100%" style="stop-color:#4a5a6a"/>
+    </linearGradient>
+    <pattern id="grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#444" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#skyGrad3)"/>
+
+  <!-- Grid (ground plane) -->
+  <g transform="translate(50, 220) skewX(-30) scale(1, 0.5)">
+    <rect width="300" height="200" fill="url(#grid3)" opacity="0.3"/>
+  </g>
+
+  <!-- Ground plane -->
+  <polygon points="50,220 200,280 350,220 200,160" fill="#2a2a3e" stroke="#444" stroke-width="1"/>
+
+  <!-- Building with cavity fill visible through windows -->
+  <g transform="translate(120, 90)">
+    <!-- Main body -->
+    <polygon points="0,50 0,120 80,120 80,50" fill="url(#buildingGrad3)" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="0,50 40,20 120,20 80,50" fill="#99bbdd" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="80,50 120,20 120,90 80,120" fill="#7799bb" stroke="#5577aa" stroke-width="1"/>
+
+    <!-- Roof -->
+    <polygon points="10,50 50,10 90,50" fill="#aa8866" stroke="#886644" stroke-width="1"/>
+    <polygon points="50,10 130,10 90,50" fill="#ccaa88" stroke="#886644" stroke-width="1"/>
+
+    <!-- Windows with CAVITY FILL visible (darker interior) -->
+    <rect x="15" y="65" width="20" height="25" fill="url(#cavityGrad)" stroke="#5577aa"/>
+    <rect x="45" y="65" width="20" height="25" fill="url(#cavityGrad)" stroke="#5577aa"/>
+    <rect x="15" y="100" width="20" height="15" fill="url(#cavityGrad)" stroke="#5577aa"/>
+
+    <!-- Door with cavity fill -->
+    <rect x="45" y="100" width="15" height="20" fill="url(#cavityGrad)" stroke="#5577aa"/>
+
+    <!-- Interior visible through side window -->
+    <rect x="90" y="45" width="15" height="20" fill="url(#cavityGrad)" stroke="#5577aa"/>
+  </g>
+
+  <!-- Cavity fill indicator -->
+  <g transform="translate(280, 110)">
+    <rect x="0" y="0" width="60" height="40" fill="url(#cavityGrad)" stroke="#78909c" stroke-width="1" rx="3"/>
+    <text x="30" y="15" fill="#fff" font-size="8" font-family="monospace" text-anchor="middle">BackSide</text>
+    <text x="30" y="25" fill="#fff" font-size="8" font-family="monospace" text-anchor="middle">Material</text>
+    <text x="30" y="35" fill="#b0bec5" font-size="7" font-family="monospace" text-anchor="middle">(Interior)</text>
+    <line x1="0" y1="20" x2="-25" y2="20" stroke="#78909c" stroke-width="1" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Explanation callout -->
+  <g transform="translate(20, 180)">
+    <rect width="100" height="50" fill="#37474f" stroke="#546e7a" rx="3" opacity="0.9"/>
+    <text x="50" y="15" fill="#fff" font-size="8" font-family="sans-serif" text-anchor="middle">THREE.BackSide</text>
+    <text x="50" y="28" fill="#90a4ae" font-size="7" font-family="monospace" text-anchor="middle">renders interior</text>
+    <text x="50" y="40" fill="#90a4ae" font-size="7" font-family="monospace" text-anchor="middle">surfaces visible</text>
+  </g>
+
+  <!-- Label -->
+  <text x="200" y="25" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Cavity Fill (BackSide Material)</text>
+  <text x="200" y="290" fill="#888" font-size="10" font-family="monospace" text-anchor="middle">Interior appears solid - dark material visible through openings</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#2d2d44"/>
+    </linearGradient>
+    <linearGradient id="buildingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#88aacc"/>
+      <stop offset="100%" style="stop-color:#6688aa"/>
+    </linearGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#444" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#skyGrad)"/>
+
+  <!-- Grid (ground plane) -->
+  <g transform="translate(50, 220) skewX(-30) scale(1, 0.5)">
+    <rect width="300" height="200" fill="url(#grid)" opacity="0.3"/>
+  </g>
+
+  <!-- Ground plane -->
+  <polygon points="50,220 200,280 350,220 200,160" fill="#2a2a3e" stroke="#444" stroke-width="1"/>
+
+  <!-- Building (floating above ground - GAP visible) -->
+  <g transform="translate(120, 60)">
+    <!-- Main body -->
+    <polygon points="0,80 0,150 80,150 80,80" fill="url(#buildingGrad)" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="0,80 40,50 120,50 80,80" fill="#99bbdd" stroke="#5577aa" stroke-width="1"/>
+    <polygon points="80,80 120,50 120,120 80,150" fill="#7799bb" stroke="#5577aa" stroke-width="1"/>
+
+    <!-- Roof -->
+    <polygon points="10,80 50,40 90,80" fill="#aa8866" stroke="#886644" stroke-width="1"/>
+    <polygon points="50,40 130,40 90,80" fill="#ccaa88" stroke="#886644" stroke-width="1"/>
+
+    <!-- Windows (hollow - can see through) -->
+    <rect x="15" y="95" width="20" height="25" fill="#1a1a2e" stroke="#5577aa"/>
+    <rect x="45" y="95" width="20" height="25" fill="#1a1a2e" stroke="#5577aa"/>
+    <rect x="15" y="130" width="20" height="15" fill="#1a1a2e" stroke="#5577aa"/>
+
+    <!-- Door -->
+    <rect x="45" y="130" width="15" height="20" fill="#1a1a2e" stroke="#5577aa"/>
+  </g>
+
+  <!-- Gap indicator -->
+  <g transform="translate(230, 180)">
+    <line x1="0" y1="0" x2="0" y2="30" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="4,2"/>
+    <text x="5" y="20" fill="#ff6b6b" font-size="10" font-family="monospace">GAP</text>
+  </g>
+
+  <!-- Label -->
+  <text x="200" y="25" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Original Model (No Fill)</text>
+  <text x="200" y="290" fill="#888" font-size="10" font-family="monospace" text-anchor="middle">Model floats above ground - hollow interior visible</text>
+</svg>

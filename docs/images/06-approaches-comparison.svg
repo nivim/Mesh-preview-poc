@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16162a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="300" y="25" fill="#fff" font-size="14" font-family="sans-serif" text-anchor="middle" font-weight="bold">Fill Approaches Comparison</text>
+
+  <!-- Approach 1: Convex Hull -->
+  <g transform="translate(20, 45)">
+    <rect width="130" height="160" fill="#252540" rx="5" stroke="#444"/>
+    <text x="65" y="20" fill="#ff9800" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Convex Hull</text>
+
+    <!-- Building shape (L-shape becomes blob) -->
+    <g transform="translate(15, 35)">
+      <!-- Original L-shape outline -->
+      <path d="M10,80 L10,20 L60,20 L60,50 L40,50 L40,80 Z" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- Convex hull (blob) -->
+      <polygon points="10,80 10,20 60,20 60,80" fill="#ff980044" stroke="#ff9800" stroke-width="2"/>
+    </g>
+
+    <!-- Pros/Cons -->
+    <text x="10" y="125" fill="#81c784" font-size="8" font-family="monospace">+ Fast</text>
+    <text x="10" y="137" fill="#81c784" font-size="8" font-family="monospace">+ Simple</text>
+    <text x="10" y="149" fill="#ff6b6b" font-size="8" font-family="monospace">- Loses detail</text>
+  </g>
+
+  <!-- Approach 2: Projected Base (IMPLEMENTED) -->
+  <g transform="translate(160, 45)">
+    <rect width="130" height="160" fill="#1b3a1b" rx="5" stroke="#4caf50" stroke-width="2"/>
+    <text x="65" y="20" fill="#4caf50" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Projected Base</text>
+    <text x="65" y="32" fill="#81c784" font-size="7" font-family="monospace" text-anchor="middle">(IMPLEMENTED)</text>
+
+    <!-- Building with base fill -->
+    <g transform="translate(15, 40)">
+      <!-- Building -->
+      <rect x="20" y="10" width="60" height="40" fill="#88aacc" stroke="#5577aa"/>
+      <!-- Base fill -->
+      <rect x="10" y="50" width="80" height="25" fill="#4caf5088" stroke="#4caf50" stroke-width="1"/>
+      <!-- Ground line -->
+      <line x1="0" y1="75" x2="100" y2="75" stroke="#666" stroke-width="1"/>
+    </g>
+
+    <!-- Pros/Cons -->
+    <text x="10" y="125" fill="#81c784" font-size="8" font-family="monospace">+ Preserves shape</text>
+    <text x="10" y="137" fill="#81c784" font-size="8" font-family="monospace">+ Real geometry</text>
+    <text x="10" y="149" fill="#ffb74d" font-size="8" font-family="monospace">~ No cavity fill</text>
+  </g>
+
+  <!-- Approach 3: Depth Buffer -->
+  <g transform="translate(300, 45)">
+    <rect width="130" height="160" fill="#252540" rx="5" stroke="#444"/>
+    <text x="65" y="20" fill="#9c27b0" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Depth Buffer</text>
+
+    <!-- 6-direction render diagram -->
+    <g transform="translate(15, 35)">
+      <!-- Cube with arrows -->
+      <rect x="30" y="25" width="40" height="40" fill="#9c27b044" stroke="#9c27b0"/>
+      <!-- Arrows from 6 directions -->
+      <line x1="50" y1="5" x2="50" y2="20" stroke="#9c27b0" stroke-width="2" marker-end="url(#arrowhead)"/>
+      <line x1="50" y1="85" x2="50" y2="70" stroke="#9c27b0" stroke-width="2" marker-end="url(#arrowhead)"/>
+      <line x1="10" y1="45" x2="25" y2="45" stroke="#9c27b0" stroke-width="2" marker-end="url(#arrowhead)"/>
+      <line x1="90" y1="45" x2="75" y2="45" stroke="#9c27b0" stroke-width="2" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <!-- Pros/Cons -->
+    <text x="10" y="125" fill="#81c784" font-size="8" font-family="monospace">+ Any shape</text>
+    <text x="10" y="137" fill="#81c784" font-size="8" font-family="monospace">+ Accurate</text>
+    <text x="10" y="149" fill="#ff6b6b" font-size="8" font-family="monospace">- Complex shaders</text>
+  </g>
+
+  <!-- Approach 4: Voxelization -->
+  <g transform="translate(440, 45)">
+    <rect width="130" height="160" fill="#252540" rx="5" stroke="#444"/>
+    <text x="65" y="20" fill="#00bcd4" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Voxelization</text>
+
+    <!-- Voxel grid -->
+    <g transform="translate(25, 35)">
+      <!-- Grid of cubes -->
+      <g fill="#00bcd433" stroke="#00bcd4" stroke-width="0.5">
+        <rect x="10" y="50" width="15" height="15"/>
+        <rect x="25" y="50" width="15" height="15"/>
+        <rect x="40" y="50" width="15" height="15"/>
+        <rect x="55" y="50" width="15" height="15"/>
+        <rect x="10" y="35" width="15" height="15"/>
+        <rect x="25" y="35" width="15" height="15"/>
+        <rect x="40" y="35" width="15" height="15"/>
+        <rect x="55" y="35" width="15" height="15"/>
+        <rect x="25" y="20" width="15" height="15"/>
+        <rect x="40" y="20" width="15" height="15"/>
+        <rect x="30" y="5" width="20" height="15"/>
+      </g>
+    </g>
+
+    <!-- Pros/Cons -->
+    <text x="10" y="125" fill="#81c784" font-size="8" font-family="monospace">+ True fill</text>
+    <text x="10" y="137" fill="#81c784" font-size="8" font-family="monospace">+ Accurate volume</text>
+    <text x="10" y="149" fill="#ff6b6b" font-size="8" font-family="monospace">- Slow, lossy</text>
+  </g>
+
+  <!-- Our Combined Approach -->
+  <g transform="translate(90, 220)">
+    <rect width="420" height="160" fill="#1a2a3a" rx="8" stroke="#3d5a80" stroke-width="2"/>
+    <text x="210" y="25" fill="#4fc3f7" font-size="12" font-family="sans-serif" text-anchor="middle" font-weight="bold">Our Implementation: Projected Base + BackSide Material</text>
+
+    <!-- Diagram showing combination -->
+    <g transform="translate(20, 45)">
+      <!-- Building with both fills -->
+      <g transform="translate(0, 0)">
+        <text x="50" y="0" fill="#888" font-size="8" font-family="monospace" text-anchor="middle">Step 1: Base Fill</text>
+        <!-- Base -->
+        <rect x="20" y="50" width="60" height="20" fill="#4caf5088" stroke="#4caf50"/>
+        <!-- Building outline -->
+        <rect x="25" y="15" width="50" height="35" fill="none" stroke="#88aacc" stroke-width="2"/>
+      </g>
+
+      <text x="130" y="45" fill="#888" font-size="16">+</text>
+
+      <g transform="translate(150, 0)">
+        <text x="50" y="0" fill="#888" font-size="8" font-family="monospace" text-anchor="middle">Step 2: BackSide</text>
+        <!-- Building with interior visible -->
+        <rect x="25" y="15" width="50" height="55" fill="#88aacc" stroke="#5577aa" stroke-width="2"/>
+        <!-- Window showing interior -->
+        <rect x="35" y="25" width="15" height="20" fill="#5d6d7e" stroke="#444"/>
+        <rect x="55" y="25" width="15" height="20" fill="#5d6d7e" stroke="#444"/>
+      </g>
+
+      <text x="280" y="45" fill="#888" font-size="16">=</text>
+
+      <g transform="translate(300, 0)">
+        <text x="50" y="0" fill="#81c784" font-size="8" font-family="monospace" text-anchor="middle">Result: Solid Preview</text>
+        <!-- Complete solid-looking building -->
+        <rect x="15" y="50" width="70" height="20" fill="#4caf5088" stroke="#4caf50"/>
+        <rect x="20" y="15" width="60" height="55" fill="#88aacc" stroke="#5577aa" stroke-width="2"/>
+        <rect x="30" y="25" width="15" height="20" fill="#5d6d7e"/>
+        <rect x="55" y="25" width="15" height="20" fill="#5d6d7e"/>
+      </g>
+    </g>
+
+    <!-- Benefits -->
+    <g transform="translate(20, 125)">
+      <text x="0" y="0" fill="#81c784" font-size="9" font-family="monospace">✓ Fast (no heavy computation)</text>
+      <text x="140" y="0" fill="#81c784" font-size="9" font-family="monospace">✓ Real base geometry</text>
+      <text x="280" y="0" fill="#81c784" font-size="9" font-family="monospace">✓ Solid appearance</text>
+    </g>
+  </g>
+</svg>

@@ -36,6 +36,34 @@ This POC demonstrates client-side visualization techniques for "filling" IFC bui
 
 ## Visual Output Examples
 
+> **Note:** To capture real screenshots of the running application, see the [Capturing Screenshots](#capturing-screenshots) section below. The diagrams in this section illustrate the concepts; run the app locally to see real WebGL output.
+
+### Live Screenshots
+
+To generate screenshots from the running application:
+
+```bash
+# Start the dev server
+npm run dev
+
+# Open http://localhost:5173 in your browser
+# Use the orbit controls to rotate and explore the model
+# Take screenshots using your browser or OS screenshot tool
+```
+
+**Expected output when running locally:**
+
+| View | Description |
+|------|-------------|
+| Initial Load | Building model centered, floating above grid |
+| Base Fill (green) | Semi-transparent green extrusion from ground to model base |
+| Cavity Fill | Dark interior visible through windows/doors |
+| Stats Panel | Volume calculations displayed in top-left corner |
+
+---
+
+### Concept Diagrams
+
 ### 1. Original Model (No Fill)
 
 The IFC model loaded without any filling applied:
@@ -357,6 +385,54 @@ npm run build
 ```
 
 Open http://localhost:5173 to view the application.
+
+---
+
+## Capturing Screenshots
+
+To document your implementation or share results, capture screenshots of the running application:
+
+### Manual Screenshot Capture
+
+1. **Start the application:**
+   ```bash
+   npm run dev
+   ```
+
+2. **Open in browser:** Navigate to http://localhost:5173
+
+3. **Wait for loading:** The model will load and display with fills applied
+
+4. **Capture different views:**
+   - **Default view** - Initial camera position showing full model
+   - **Rotated view** - Click and drag to orbit around the model
+   - **Side view** - Rotate to see the green base fill clearly
+   - **Top-down view** - Look down to see footprint shape
+   - **Zoomed view** - Scroll to zoom in on details
+
+5. **Screenshot the stats panel:** The info panel shows volume calculations
+
+### Recommended Screenshots
+
+| Screenshot | Description | What to Look For |
+|------------|-------------|------------------|
+| `full-view.png` | Initial load, isometric | Building + green base + grid |
+| `side-view.png` | Side angle | Clear view of green base fill height |
+| `front-view.png` | Front facade | Windows showing dark cavity fill |
+| `top-view.png` | Birds-eye view | Footprint shape and coverage |
+| `stats-panel.png` | Info panel | Volume numbers and stats |
+| `zoomed-detail.png` | Close-up | Material details and fill edges |
+
+### Expected Visual Results
+
+When running the application, you should see:
+
+1. **Blue-gray building model** (semi-transparent, opacity 0.9)
+2. **Green base fill** (semi-transparent, extending from ground to model base)
+3. **Dark gray interior** (visible through windows/doors from BackSide material)
+4. **Grid ground plane** (dark gray with grid lines)
+5. **Stats panel** (top-left corner with volume calculations)
+6. **"Demo Mode" indicator** (if model was raised for demonstration)
 
 ---
 
